@@ -2,6 +2,8 @@ package domain
 
 import (
 	"github.com/asaskevich/govalidator"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	_ "github.com/lib/pq"
 	uuid "github.com/satori/go.uuid"
 	"time"
 )
