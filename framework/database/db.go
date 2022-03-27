@@ -2,6 +2,8 @@ package database
 
 import (
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	_ "github.com/lib/pq"
 	"log"
 	"video-enconder-microsservice/domain"
 )
