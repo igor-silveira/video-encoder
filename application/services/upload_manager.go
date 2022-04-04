@@ -55,3 +55,14 @@ func (videoUpload *VideoUpload) loadPaths() error {
 	}
 	return nil
 }
+
+func getClientUpload() (*storage.Client, context.Context, error) {
+	ctx := context.Background()
+	client, err := storage.NewClient(ctx)
+
+	if err != nil {
+		return nil, nil, err
+	}
+
+	return client, ctx, nil
+}
