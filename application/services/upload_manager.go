@@ -113,5 +113,5 @@ func (videoUpload *VideoUpload) uploadWorker(in chan int, returnChan chan string
 		}
 		returnChan <- ""
 	}
-	returnChan <- "uploaded completed"
+	returnChan <- "upload completed"
 }
