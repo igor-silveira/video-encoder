@@ -5,6 +5,7 @@ import (
 	"context"
 	"io"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -38,5 +39,19 @@ func (videoUpload *VideoUpload) UploadObject(objectPath string, client *storage.
 		return err
 	}
 
+	return nil
+}
+
+func (videoUpload *VideoUpload) loadPaths() error {
+	err := filepath.Walk(videoUpload.VideoPath, func(path string, info os.FileInfo, err error) error {
+		if !info.IsDir() {
+			videoUpload.Paths = append(videoUpload.Paths, path)
+		}
+		return nil
+	})
+
+	if err != nil {
+		return err
+	}
 	return nil
 }
