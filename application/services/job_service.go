@@ -87,7 +87,7 @@ func (j JobService) performUpload() error {
 	videoUpload := NewVideoUpload()
 	videoUpload.OutputBucket = os.Getenv("OUTPUT_BUCKET_NAME")
 	videoUpload.VideoPath = os.Getenv("LOCAL_STORAGE_PATH") + "/" + j.VideoService.Video.ID
-	concurrency, _ := strconv.Atoi("CONCURRENCY_UPLOAD")
+	concurrency, _ := strconv.Atoi(os.Getenv("CONCURRENCY_UPLOAD"))
 	doneUpload := make(chan string)
 
 	go videoUpload.ProcessUpload(concurrency, doneUpload)
