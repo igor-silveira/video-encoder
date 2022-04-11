@@ -67,7 +67,10 @@ func (j *JobManager) Start(ch *amqp.Channel) {
 }
 
 func (j *JobManager) notifySuccess(jobResult JobWorkerResult, ch *amqp.Channel) error {
+	Mutex.Lock()
 	jobJson, err := json.Marshal(jobResult.Job)
+	Mutex.Unlock()
+
 	if err != nil {
 		return err
 	}
