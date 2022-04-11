@@ -40,9 +40,8 @@ func (j *JobManager) Start(ch *amqp.Channel) {
 	videoService.VideoRepository = repositories.VideoRepositoryDb{Db: j.Db}
 
 	jobService := JobService{
-		Job:           nil,
 		JobRepository: repositories.JobRepositoryDb{Db: j.Db},
-		VideoService:  VideoService{},
+		VideoService:  videoService,
 	}
 
 	concurrency, err := strconv.Atoi(os.Getenv("CONCURRENCY_WORKERS"))
